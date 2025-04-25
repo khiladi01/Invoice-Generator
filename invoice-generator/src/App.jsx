@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SenderForm from './components/SenderForm';
 import ClientForm from './components/ClientForm';
+import InvoiceItem from './components/InvoiceItems';
 import bgImage from './assets/bgimg.jpg';
 
 function App() {
@@ -18,6 +19,12 @@ function App() {
   const [clientemail, setClientEmail] = useState('');
   const [clientphone, setClientPhone] = useState('');
   const [clientwebsite, setClientWebsite] = useState('');
+
+  const [id , setId] = useState('')
+  const [description , setDescription] = useState('')
+  const [quantity , setQuantity] = useState('')
+  const [price , setPrice] = useState('')
+  const [total , setTotal] = useState('')
 
   return (
     <>  
@@ -43,6 +50,14 @@ function App() {
               clientphone={clientphone} setClientPhone={setClientPhone}
               clientwebsite={clientwebsite} setClientWebsite={setClientWebsite}
                />} />
+
+               <Route path='/item' element={ <InvoiceItem 
+               id={id} setId={setId}
+               description={description} setDescription={setDescription}
+               quantity={quantity} setQuantity={setQuantity}
+               price={price} setPrice={setPrice}
+               total={total} setTotal={setTotal}
+                /> } />
            </Routes>
            </div>
            </div>

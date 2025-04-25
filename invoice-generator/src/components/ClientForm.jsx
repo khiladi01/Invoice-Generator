@@ -91,10 +91,10 @@ function ClientForm({
                     {error && <p className='text-pink-700 h-[30px] text-left ml-3 font-semibold italic'> {error} </p>}
 
                     <Link
-                        to="/"
-                        className="h-[30px] w-[148px] block text-left text-cyan-600 ml-3 font-medium outline-0 rounded-lg hover:text-cyan-700 cursor-pointer "
+                        to="/item"
+                        className="h-[30px] w-[180px] block text-left text-cyan-600 ml-3 font-medium outline-0 rounded-lg hover:text-cyan-700 cursor-pointer "
                     >
-                        Go to Sender Page
+                        Go to Product Item Page
                     </Link>
                 </form>
             </div>
