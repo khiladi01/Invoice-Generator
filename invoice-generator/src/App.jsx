@@ -4,6 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import SenderForm from './components/SenderForm';
 import ClientForm from './components/ClientForm';
 import InvoiceItem from './components/InvoiceItems';
+import InvoiceSummary from './components/InvoiceSummary';
+import InvoicePreview from './components/InvoicePreview';
 import bgImage from './assets/bgimg.jpg';
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
   const [price , setPrice] = useState('')
   const [total , setTotal] = useState('')
 
+
   return (
     <>  
 
@@ -37,7 +40,7 @@ function App() {
            <Routes>
               <Route path='/' element={<SenderForm
               sendername={sendername} setSenderName={setSenderName}
-              senderaddress={senderaddress}setSenderAddress={setSenderAddress} 
+              senderaddress={senderaddress} setSenderAddress={setSenderAddress} 
               senderemail={senderemail} setSenderEmail={setSenderEmail}
               senderphone={senderphone} setSenderPhone={setSenderPhone}
               senderwebsite={senderwebsite} setSenderWebsite={setSenderWebsite}
@@ -45,7 +48,7 @@ function App() {
 
               <Route path='/client' element={<ClientForm
               clientname={clientname} setClientName={setClientName}
-              clientaddress={clientaddress}setClientAddress={setClientAddress} 
+              clientaddress={clientaddress} setClientAddress={setClientAddress} 
               clientemail={clientemail} setClientEmail={setClientEmail}
               clientphone={clientphone} setClientPhone={setClientPhone}
               clientwebsite={clientwebsite} setClientWebsite={setClientWebsite}
@@ -58,6 +61,33 @@ function App() {
                price={price} setPrice={setPrice}
                total={total} setTotal={setTotal}
                 /> } />
+
+              <Route path='/invoiceitemsummary' element={ <InvoiceSummary 
+              id={id}
+              description={description}
+              quantity={quantity}
+              price={price}
+              total={total}
+              /> } />
+
+              <Route path='/invoicepreview' element={ <InvoicePreview 
+              sendername={sendername} 
+              senderaddress={senderaddress}
+              senderemail={senderemail} 
+              senderphone={senderphone} 
+              senderwebsite={senderwebsite} 
+              clientname={clientname} 
+              clientaddress={clientaddress}
+              clientemail={clientemail} 
+              clientphone={clientphone} 
+              clientwebsite={clientwebsite} 
+              id={id}
+              description={description}
+              quantity={quantity}
+              price={price}
+              total={total}
+              /> } />
+
            </Routes>
            </div>
            </div>

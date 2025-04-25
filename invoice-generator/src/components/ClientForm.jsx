@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 function ClientForm({
-    clientname, setClientName, clientaddress, setClientAddress, clientemail, setClientEmail, clientphone, setClientphone, clientwebsite, setClientWebsite
+    clientname, setClientName, clientaddress, setClientAddress, clientemail, setClientEmail, clientphone, setClientPhone, clientwebsite, setClientWebsite
 }) {
 
     const [error , setError] = useState("") 
@@ -74,7 +74,7 @@ function ClientForm({
                     <input
                         type="text"
                         value={clientphone}
-                        onChange={(e) => setClientphone(e.target.value)}
+                        onChange={(e) => setClientPhone(e.target.value)}
                         placeholder="Client Phone"
                         className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-200 font-medium outline-0' />
                     <input
