@@ -1,4 +1,41 @@
 function InvoicePreview ({ sendername , senderaddress , senderemail , senderphone , senderwebsite , clientname , clientaddress , clientemail , clientphone , clientwebsite , id , description , quantity , price , total } ){
+
+    const handleDownload = () => {
+
+        const invoiceContent = `
+          Invoice Preview
+          ----------------------------
+          Sender Details:
+          Name: ${sendername}
+          Address: ${senderaddress}
+          Email: ${senderemail}
+          Phone: ${senderphone}
+          Website: ${senderwebsite}
+    
+          Client Details:
+          Name: ${clientname}
+          Address: ${clientaddress}
+          Email: ${clientemail}
+          Phone: ${clientphone}
+          Website: ${clientwebsite}
+    
+          Product Details:
+          Product ID: ${id}
+          Description: ${description}
+          Quantity: ${quantity}
+          Price: Rs ${price}
+          Total: Rs ${total}
+        `;
+
+    const blob = new Blob([invoiceContent], { type: "text/plain" });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "Invoice.txt"; 
+    link.click();
+
+    URL.revokeObjectURL(link.href);
+  };
   
     return(
         <>
@@ -57,6 +94,14 @@ function InvoicePreview ({ sendername , senderaddress , senderemail , senderphon
    Total Bill To Pay : <span className="text-gray-800">Rs : {total}</span>
   </p>
 </div>
+
+        <button
+          onClick={handleDownload}
+          className="mt-4 w-full bg-cyan-600 text-white py-2 px-4 rounded-lg hover:bg-cyan-700"
+        >
+          Download Invoice
+        </button>
+
 </div>
         </>
     )
