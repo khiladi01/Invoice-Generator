@@ -3,7 +3,7 @@ function InvoicePreview ({ sendername , senderaddress , senderemail , senderphon
     const handleDownload = () => {
 
         const invoiceContent = `
-          Invoice Preview
+          Invoice Download
           ----------------------------
           Sender Details:
           Name: ${sendername}
