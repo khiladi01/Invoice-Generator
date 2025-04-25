@@ -3,19 +3,44 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 function ClientForm({
-    name, setName, address, setAddress, email, setEmail, phone, setphone, website, setWebsite
+    clientname, setClientName, clientaddress, setClientAddress, clientemail, setClientEmail, clientphone, setClientphone, clientwebsite, setClientWebsite
 }) {
 
     const [error , setError] = useState("") 
     
-    const handleerror = (e) => {
+    const ErrorHandler = (e) => {
         e.preventDefault();
 
-        if (name  === ""){
-            setError("Name Is Required")
+        if (clientname  == "" || clientaddress == "" || clientemail == "" || clientphone == ""){
+            setError("Error : All Fields Are Required")
             return;
-        }else{
-            console.log("Sender Data :" , {name,address,email,phone,website});
+        }
+        
+        else if(clientname.length < 3){
+            setError("Error : Not Valid Name")
+            return;
+        }
+
+        else if(clientaddress.length > 80){
+            setError("Error : Not Valid Address")
+            return;
+        }
+
+        else if(clientphone.length < 10){
+            setError("Error : Phone Is Not Valid")
+            return;
+        }
+
+        else if(clientwebsite.length < 5){
+            setError("Error : Website Not Found")
+            return;
+        }
+
+        else{
+            setError("")
+            alert("Sender Form Submitted")
+            console.log("Sender Data :" , {clientname,clientaddress,clientemail,clientphone,clientwebsite});
+            return;
         }
         
     }
@@ -27,47 +52,47 @@ function ClientForm({
                 <header className='h-[30px] w-full flex justify-center items-center bg-transparent text-cyan-50 font-bold text-lg p-5 underline-offset-8 underline decoration-2 decoration-cyan-600'>
                     <p>Client Form</p>
                 </header>
-                <form onSubmit={handleerror}>
+                <form onSubmit={ErrorHandler}>
                     <input
                         type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Sender Name"
-                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-800 font-medium outline-0' />
+                        value={clientname}
+                        onChange={(e) => setClientName(e.target.value)}
+                        placeholder="Client Name"
+                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-200 font-medium outline-0' />
                     <input
                         type="address"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Sender Address"
-                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-800 font-medium outline-0' />
+                        value={clientaddress}
+                        onChange={(e) => setClientAddress(e.target.value)}
+                        placeholder="Client Address"
+                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-200 font-medium outline-0' />
                     <input
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Sender Email"
-                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-800 font-medium outline-0' />
+                        value={clientemail}
+                        onChange={(e) => setClientEmail(e.target.value)}
+                        placeholder="Client Email"
+                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-200 font-medium outline-0' />
                     <input
                         type="text"
-                        value={phone}
-                        onChange={(e) => setphone(e.target.value)}
-                        placeholder="Sender Phone"
-                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-800 font-medium outline-0' />
+                        value={clientphone}
+                        onChange={(e) => setClientphone(e.target.value)}
+                        placeholder="Client Phone"
+                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-200 font-medium outline-0' />
                     <input
                         type="text"
-                        value={website}
-                        onChange={(e) => setWebsite(e.target.value)}
+                        value={clientwebsite}
+                        onChange={(e) => setClientWebsite(e.target.value)}
                         placeholder="Put Your website URL (Optional)"
-                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-800 font-medium outline-0 italic' />
+                        className='h-[40px] w-full border-1 border-cyan-600 p-4 rounded-lg m-1 text-slate-200 font-medium outline-0 italic' />
                     <input
                         type="submit"
                         value="Submit"
                         className='h-[60px] w-full border-1 border-cyan-600 p-4 rounded-lg flex justify-center items-center m-1 hover:bg-cyan-100 hover:text-black font-medium cursor-pointer outline-0' />
 
-                    {error && <p className='text-red-500 h-[30px] text-left p-1'> {error} </p>}
+                    {error && <p className='text-pink-700 h-[30px] text-left ml-3 font-semibold italic'> {error} </p>}
 
                     <Link
                         to="/"
-                        className="h-[30px] w-[148px] block text-left text-slate-800 p-1.5 font-medium outline-0 rounded-lg m-1  hover:text-cyan-600 cursor-pointer "
+                        className="h-[30px] w-[148px] block text-left text-cyan-600 ml-3 font-medium outline-0 rounded-lg hover:text-cyan-700 cursor-pointer "
                     >
                         Go to Sender Page
                     </Link>
